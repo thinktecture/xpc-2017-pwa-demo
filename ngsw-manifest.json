@@ -11,5 +11,9 @@
   "theme_color": "#FF584F",
   "start_url": "/",
   "display": "standalone",
-  "gcm_sender_id": "201432853053"
+  "gcm_sender_id": "201432853053",
+  "push": {
+    "showNotifications": true,
+    "backgroundOnly": true
+  }
 }
