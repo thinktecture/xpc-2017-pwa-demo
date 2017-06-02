@@ -1,28 +1,20 @@
-# XpcPwaDemo
+# XPC 2017 PWA Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
+This sample shows some features of Progressive Web Apps in Angular. You can follow the branches (`feature/step1`, …) to recap the single steps shown in the talk.
 
-## Development server
+## Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Install prerequisites (this sample was created with Node.js 7.10.0 and Angular CLI 1.0.6)
+2. Clone the repository
+3. Install the npm packages via `npm install`
+4. Run `ng serve --prod`
 
-## Code scaffolding
+## Push
+While offline availability and the Web App Manifest work out of the box, setting up push requires some more steps. Please note that the push server included in this repository is a very simple implementation that only supports Android and Chrome as of now. There are third-party services that can handle more targets.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Create [a new Firebase project](https://console.firebase.google.com/project/).
+2. Update the `gcm_sender_id` by using the `messagingSenderId` provided in the _Add App > Add Firebase to my Web App_ dialogue in the Firebase project’s settings (in order to support older versions of Chrome).
+3. Set the API key shown in the Firebase project’s settings in `server.js` (line 5).
+4. Start the (simple) local push server using `npm run push-server` in the terminal or command line.
+5. Make sure to refresh the Service Worker enabled app so ensure that the push subscription was established.
+6. You can send an arbitrary string to `http://[::]:8080/notify` in order to notify all registered clients.
